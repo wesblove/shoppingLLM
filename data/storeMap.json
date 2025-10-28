@@ -1,0 +1,228 @@
+{
+  "metadata": {
+    "description": "Walmart-style floor layout (~236k sq ft) derived from provided floor map. Coordinates are aisle-center points. Distances default to Manhattan unless edge override provided.",
+    "distance_units": "arbitrary floor units (convertible to meters/feet per store)",
+    "distance_rule": "manhattan",
+    "generated_by": "GPT-5 Thinking",
+    "version": "1.0.0"
+  },
+
+  "nodes": {
+    "ENTRY1":  { "x": 8,  "y": 4,  "section": "Front Entry (Grocery-side)", "items": ["carts","entrance"] },
+    "ENTRY2":  { "x": 64, "y": 4,  "section": "Front Entry (Center)",      "items": ["carts","entrance"] },
+    "REG":     { "x": 60, "y": 4,  "section": "Registers/Checkout",        "items": ["checkout","customer service"] },
+
+    "G01": { "x": 12, "y": 6,  "section": "Grocery - Produce/Bakery/Deli (front)", "items": ["fresh produce","bakery breads","cakes","deli counter"] },
+    "G02": { "x": 16, "y": 10, "section": "Grocery - Meats & Seafood",              "items": ["beef","poultry","pork","seafood"] },
+    "G03": { "x": 20, "y": 14, "section": "Grocery - Deli Meats & Cheese",          "items": ["sliced meats","specialty cheese"] },
+    "G04": { "x": 24, "y": 18, "section": "Grocery - Staples 1",                    "items": ["pasta","rice","canned vegetables","beans"] },
+    "G05": { "x": 28, "y": 22, "section": "Grocery - Staples 2",                    "items": ["soups","tomato sauce","condiments","pickles"] },
+    "G06": { "x": 32, "y": 26, "section": "Grocery - Breakfast & Baking",           "items": ["cereal","oatmeal","flour","sugar","baking mixes"] },
+    "G07": { "x": 36, "y": 30, "section": "Grocery - Snacks",                        "items": ["chips","cookies","crackers","popcorn"] },
+    "G08": { "x": 16, "y": 34, "section": "Grocery - International/Specialty",      "items": ["Asian foods","Latin foods","kosher","gluten-free"] },
+    "G09": { "x": 20, "y": 38, "section": "Grocery - Canned & Packaged 2",          "items": ["tuna","tomatoes","broths","pasta sauce"] },
+    "G10": { "x": 24, "y": 42, "section": "Grocery - Frozen 1",                      "items": ["frozen meals","vegetables"] },
+    "G11": { "x": 28, "y": 46, "section": "Grocery - Frozen 2",                      "items": ["ice cream","pizza","frozen desserts"] },
+    "G12": { "x": 32, "y": 50, "section": "Grocery - Dairy",                         "items": ["cheese","yogurt","butter","sour cream"] },
+    "G13": { "x": 36, "y": 54, "section": "Grocery - Milk run",                      "items": ["milk gallons","lactose-free","plant milks"] },
+    "G14": { "x": 40, "y": 58, "section": "Grocery - Soda/Water/Beer/Wine (back)",  "items": ["soft drinks","bottled water","beer","wine"] },
+
+    "B1":  { "x": 46, "y": 52, "section": "Infants & Toddlers - Diapers/Wipes",        "items": ["diapers","pull-ups","wipes"] },
+    "B2":  { "x": 50, "y": 56, "section": "Infants & Toddlers - Formula/Feeding",      "items": ["formula","bottles","baby food pouches"] },
+    "B3":  { "x": 54, "y": 52, "section": "Infants & Toddlers - Care & Gear",          "items": ["baby shampoo","lotions","pacifiers","carriers"] },
+
+    "SH1": { "x": 58, "y": 52, "section": "Shoes (Family Footwear)",                   "items": ["mens shoes","womens shoes","kids shoes","socks (spillover)"] },
+
+    "FC1": { "x": 64, "y": 56, "section": "Fabric & Crafts",                           "items": ["fabric bolts","yarn","thread","sewing notions"] },
+    "PH1": { "x": 68, "y": 56, "section": "1-Hour Photo",                               "items": ["prints","kiosks","photo services"] },
+
+    "E01": { "x": 76,  "y": 56, "section": "Electronics - Cameras & Media",            "items": ["digital cameras","SD cards","microSD","camera bags"] },
+    "E02": { "x": 80,  "y": 56, "section": "Electronics - Cables & Power",             "items": ["HDMI","USB-C","chargers","surge protectors"] },
+    "E03": { "x": 84,  "y": 56, "section": "Electronics - TV/Audio",                   "items": ["TVs","soundbars","streaming devices"] },
+    "E04": { "x": 88,  "y": 56, "section": "Electronics - Computers & Accessories",    "items": ["laptops","mice","keyboards","monitors"] },
+    "E05": { "x": 92,  "y": 56, "section": "Electronics - Networking & Storage",       "items": ["routers","external SSD/HDD","USB flash"] },
+    "E06": { "x": 96,  "y": 56, "section": "Electronics - Video Games",                "items": ["consoles","video games","controllers"] },
+    "E07": { "x": 100, "y": 56, "section": "Electronics - Phones & Wearables",         "items": ["smartphones","cases","smartwatches","screen protectors"] },
+    "E08": { "x": 104, "y": 56, "section": "Electronics - Service/Lockups",            "items": ["prepaid cards","service desk","locked items"] },
+
+    "SG1": { "x": 108, "y": 54, "section": "Sporting Goods - Fitness/Weights",         "items": ["dumbbells","yoga mats","resistance bands"] },
+    "SG2": { "x": 112, "y": 52, "section": "Sporting Goods - Team Sports",             "items": ["basketballs","baseballs","pads","cleats"] },
+    "SG3": { "x": 112, "y": 48, "section": "Sporting Goods - Outdoor/Field",           "items": ["tents","camp chairs","coolers"] },
+    "SG4": { "x": 108, "y": 46, "section": "Sporting Goods - Hunting/Fishing",         "items": ["tackle","licenses (if applicable)"] },
+
+    "AUTO1": { "x": 112, "y": 42, "section": "Car Care Pad",                           "items": ["motor oil","wipers","fluids","additives"] },
+
+    "H01": { "x": 108, "y": 36, "section": "Hardware - Fasteners/Hand Tools",          "items": ["screws","nails","hammers","tape"] },
+    "H02": { "x": 112, "y": 36, "section": "Hardware - Power Tools",                   "items": ["drills","bits","saws"] },
+    "H03": { "x": 116, "y": 36, "section": "Hardware - Electrical",                    "items": ["bulbs","outlets","wire","extension cords"] },
+    "H04": { "x": 108, "y": 32, "section": "Hardware - Plumbing",                      "items": ["fittings","PVC","plumbers tape"] },
+    "H05": { "x": 112, "y": 32, "section": "Hardware - Paint & Prep",                  "items": ["paint","primers","brushes","rollers"] },
+    "H06": { "x": 116, "y": 32, "section": "Hardware - Storage/Misc",                  "items": ["shelving","bins","hooks"] },
+
+    "TLE":  { "x": 120, "y": 44, "section": "Tire & Lube Express (service)",           "items": [] },
+
+    "T01": { "x": 108, "y": 26, "section": "Toys - Action/Collectibles",               "items": ["action figures","trading cards"] },
+    "T02": { "x": 112, "y": 26, "section": "Toys - Dolls & Plush",                     "items": ["dolls","plush"] },
+    "T03": { "x": 116, "y": 26, "section": "Toys - STEM & RC",                         "items": ["STEM kits","RC cars","drones"] },
+    "T04": { "x": 108, "y": 22, "section": "Toys - Games & Puzzles",                   "items": ["board games","puzzles"] },
+    "T05": { "x": 112, "y": 22, "section": "Toys - Outdoor Play",                      "items": ["balls","outdoor sets"] },
+
+    "BIKES": { "x": 116, "y": 18, "section": "Bikes",                                  "items": ["bicycles","helmets","pumps","locks"] },
+
+    "LG1": { "x": 112, "y": 14, "section": "Lawn & Garden - Tools/Soil",               "items": ["hand tools","soil","fertilizer"] },
+    "LG2": { "x": 116, "y": 12, "section": "Lawn & Garden - Plants/Seasonal",          "items": ["plants","pots","seasonal garden"] },
+    "GCTR": { "x": 120, "y": 10, "section": "Garden Center Exit",                      "items": [] },
+
+    "HW1": { "x": 78, "y": 36, "section": "Housewares 1",                              "items": ["cookware","bakeware"] },
+    "HW2": { "x": 82, "y": 36, "section": "Housewares 2",                              "items": ["utensils","food storage"] },
+    "SA1": { "x": 86, "y": 36, "section": "Small Appliances 1",                        "items": ["coffee makers","toasters"] },
+    "SA2": { "x": 90, "y": 36, "section": "Small Appliances 2",                        "items": ["air fryers","mixers"] },
+    "DEC1":{ "x": 74, "y": 32, "section": "Home Décor",                                "items": ["frames","wall art","decor accents"] },
+    "DOM1":{ "x": 86, "y": 32, "section": "Domestics 1 (Bedding)",                     "items": ["sheets","comforters"] },
+    "DOM2":{ "x": 90, "y": 32, "section": "Domestics 2 (Bath)",                        "items": ["towels","bath mats","shower curtains"] },
+    "FURN":{ "x": 82, "y": 28, "section": "Furniture Pad",                             "items": ["RTA furniture","shelves","desks"] },
+
+    "CRD": { "x": 70, "y": 22, "section": "Cards & Party",                             "items": ["greeting cards","gift wrap","party supplies"] },
+    "JWL": { "x": 74, "y": 22, "section": "Jewelry Counter",                           "items": ["watches","fashion jewelry"] },
+
+    "OFF1": { "x": 84, "y": 22, "section": "Home/Office (Paper/Printers/Ink)",         "items": ["printer paper","printers","ink/toner"] },
+    "CNDY": { "x": 88, "y": 22, "section": "Candy Front",                              "items": ["bagged candy","chocolate"] },
+    "COS1": { "x": 92, "y": 22, "section": "Cosmetics 1",                              "items": ["makeup","foundations","eye"] },
+    "COS2": { "x": 96, "y": 22, "section": "Cosmetics 2",                              "items": ["nail care","tools","removers"] },
+
+    "PHARM":{ "x": 68, "y": 14, "section": "Pharmacy Counter",                         "items": ["Rx","consult"] },
+    "HB01": { "x": 72, "y": 14, "section": "OTC Pain/Cold/Allergy",                    "items": ["acetaminophen","ibuprofen","antihistamines"] },
+    "HB02": { "x": 76, "y": 14, "section": "Vitamins & Supplements",                   "items": ["multivitamins","protein","creatine"] },
+    "HB03": { "x": 80, "y": 14, "section": "First Aid & Med Supplies",                 "items": ["bandages","braces","thermometers"] },
+    "HB04": { "x": 84, "y": 14, "section": "Oral Care",                                "items": ["toothpaste","toothbrushes","floss"] },
+    "HB05": { "x": 88, "y": 14, "section": "Shave & Men's Grooming",                   "items": ["razors","blades","shave creams"] },
+    "HB06": { "x": 92, "y": 14, "section": "Hair Care",                                "items": ["shampoo","conditioner","styling"] },
+    "HB07": { "x": 96, "y": 14, "section": "Skin Care",                                "items": ["cleansers","lotions","sunscreen"] },
+    "HB08": { "x": 100,"y": 14, "section": "Feminine/Family Planning",                 "items": ["pads","tampons","pregnancy tests"] },
+
+    "PET1": { "x": 104, "y": 12, "section": "Pet Foods - Dog",                         "items": ["dry dog food","wet dog food","treats"] },
+    "PET2": { "x": 108, "y": 12, "section": "Pet Foods - Cat",                         "items": ["dry cat food","wet cat food","litter"] },
+
+    "GW":  { "x": 52, "y": 28, "section": "Girls' Wear",                               "items": ["girls clothing"] },
+    "BW":  { "x": 48, "y": 24, "section": "Boys' Wear",                                "items": ["boys clothing"] },
+    "MW":  { "x": 48, "y": 18, "section": "Mens' Wear",                                "items": ["mens clothing"] },
+    "LW":  { "x": 56, "y": 18, "section": "Ladies' Wear",                              "items": ["womens clothing"] },
+    "ACC": { "x": 56, "y": 24, "section": "Accessories",                               "items": ["belts","hats","bags"] },
+    "INT": { "x": 60, "y": 24, "section": "Intimates",                                 "items": ["bras","underwear"] },
+    "SOX": { "x": 60, "y": 20, "section": "Socks & Hosiery",                           "items": ["socks","hosiery"] },
+
+    "SNR_L": { "x": 20,  "y": 82, "section": "Shipping & Receiving (Left)",            "items": [] },
+    "SNR_R": { "x": 108, "y": 82, "section": "Shipping & Receiving (Right)",           "items": [] },
+    "STOCK_DOOR": { "x": 64, "y": 70, "section": "Stock Room Door",                    "items": [] }
+  },
+
+  "edges": {
+    "ENTRY1": { "REG": 52, "G01": 6 },
+    "ENTRY2": { "REG": 4,  "PHARM": 10 },
+
+    "REG":    { "ENTRY1": 52, "ENTRY2": 4, "CRD": 56, "G01": 56 },
+
+    "G01": { "G02": 8,  "ENTRY1": 6,  "REG": 56 },
+    "G02": { "G01": 8,  "G03": 8,  "G08": 24 },
+    "G03": { "G02": 8,  "G04": 8,  "G09": 24 },
+    "G04": { "G03": 8,  "G05": 8 },
+    "G05": { "G04": 8,  "G06": 8,  "GW": 28, "BW": 32 },
+    "G06": { "G05": 8,  "G07": 8,  "ACC": 26, "MW": 34, "LW": 24, "SOX": 20 },
+    "G07": { "G06": 8,  "G08": 24, "G12": 20 },
+    "G08": { "G02": 24, "G09": 8,  "G07": 24 },
+    "G09": { "G08": 8,  "G10": 8 },
+    "G10": { "G09": 8,  "G11": 8 },
+    "G11": { "G10": 8,  "G12": 8 },
+    "G12": { "G11": 8,  "G13": 8, "B1": 18 },
+    "G13": { "G12": 8,  "G14": 8, "B1": 12 },
+    "G14": { "G13": 8,  "B1": 10 },
+
+    "B1": { "G13": 12, "B2": 8,  "B3": 8, "SH1": 10 },
+    "B2": { "B1": 8,   "SH1": 6, "FC1": 8 },
+    "B3": { "B1": 8,   "SH1": 4 },
+
+    "SH1": { "B2": 6, "B3": 4, "FC1": 8 },
+
+    "FC1": { "SH1": 8, "PH1": 4, "E01": 12 },
+    "PH1": { "FC1": 4, "E01": 8 },
+
+    "E01": { "PH1": 8,  "E02": 4,  "HW1": 20 },
+    "E02": { "E01": 4,  "E03": 4 },
+    "E03": { "E02": 4,  "E04": 4 },
+    "E04": { "E03": 4,  "E05": 4,  "SA1": 20 },
+    "E05": { "E04": 4,  "E06": 4,  "SA2": 20 },
+    "E06": { "E05": 4,  "E07": 4 },
+    "E07": { "E06": 4,  "E08": 4 },
+    "E08": { "E07": 4,  "SG1": 4 },
+
+    "SG1": { "E08": 4, "SG2": 4, "SG4": 8 },
+    "SG2": { "SG1": 4, "SG3": 4, "AUTO1": 6 },
+    "SG3": { "SG2": 4, "AUTO1": 6 },
+    "SG4": { "SG1": 8, "AUTO1": 8 },
+
+    "AUTO1": { "SG2": 6, "SG3": 6, "SG4": 8, "H01": 12 },
+
+    "H01": { "AUTO1": 12, "H02": 4,  "H04": 4 },
+    "H02": { "H01": 4,    "H03": 4,  "H05": 4 },
+    "H03": { "H02": 4,    "H06": 4,  "T03": 10 },
+    "H04": { "H01": 4,    "H05": 4,  "T04": 10 },
+    "H05": { "H02": 4,    "H04": 4,  "H06": 4, "T02": 8 },
+    "H06": { "H03": 4,    "H05": 4,  "T01": 8 },
+
+    "T01": { "H06": 8, "T02": 4, "T04": 4 },
+    "T02": { "T01": 4, "T03": 4, "T05": 4, "H05": 8 },
+    "T03": { "T02": 4, "BIKES": 8, "H03": 10 },
+    "T04": { "T01": 4, "T05": 4, "LG1": 12 },
+    "T05": { "T02": 4, "T04": 4, "LG1": 10 },
+
+    "BIKES": { "T03": 8, "LG2": 6 },
+
+    "LG1": { "T04": 12, "T05": 10, "LG2": 4, "PET2": 10 },
+    "LG2": { "LG1": 4,  "GCTR": 2, "BIKES": 6 },
+
+    "GCTR": { "LG2": 2 },
+
+    "HW1": { "E01": 20, "HW2": 4,  "DEC1": 8 },
+    "HW2": { "HW1": 4,  "SA1": 4 },
+    "SA1": { "HW2": 4,  "SA2": 4,  "E04": 20 },
+    "SA2": { "SA1": 4,  "DOM2": 4, "E05": 20 },
+    "DEC1":{ "HW1": 8,  "FURN": 8 },
+    "DOM1":{ "SA1": 4,  "DOM2": 4 },
+    "DOM2":{ "DOM1": 4, "SA2": 4 },
+
+    "FURN": { "DEC1": 8, "HW2": 8, "CRD": 14 },
+
+    "CRD": { "FURN": 14, "JWL": 4, "REG": 56 },
+    "JWL": { "CRD": 4,   "OFF1": 10 },
+
+    "OFF1": { "JWL": 10, "CNDY": 4, "COS1": 8 },
+    "CNDY": { "OFF1": 4, "COS1": 4 },
+    "COS1": { "CNDY": 4, "COS2": 4, "HB04": 8 },
+    "COS2": { "COS1": 4, "HB05": 8 },
+
+    "PHARM": { "ENTRY2": 10, "HB01": 4 },
+    "HB01":  { "PHARM": 4, "HB02": 4 },
+    "HB02":  { "HB01": 4, "HB03": 4 },
+    "HB03":  { "HB02": 4, "HB04": 4 },
+    "HB04":  { "HB03": 4, "HB05": 4, "COS1": 8 },
+    "HB05":  { "HB04": 4, "HB06": 4, "COS2": 8 },
+    "HB06":  { "HB05": 4, "HB07": 4 },
+    "HB07":  { "HB06": 4, "HB08": 4, "PET1": 10 },
+    "HB08":  { "HB07": 4, "PET1": 8 },
+
+    "PET1": { "HB08": 8, "PET2": 4, "LG1": 10 },
+    "PET2": { "PET1": 4, "LG1": 10 },
+
+    "GW":  { "G05": 28, "ACC": 8,  "BW": 8 },
+    "BW":  { "G05": 32, "MW": 6,   "GW": 8 },
+    "MW":  { "BW": 6,   "LW": 8,   "G06": 34 },
+    "LW":  { "MW": 8,   "SOX": 8,  "G06": 24 },
+    "ACC": { "GW": 8,   "INT": 6,  "G06": 26 },
+    "INT": { "ACC": 6,  "SOX": 4 },
+    "SOX": { "INT": 4,  "LW": 8,   "G06": 20 },
+
+    "SNR_L": { "STOCK_DOOR": 32 },
+    "SNR_R": { "STOCK_DOOR": 32 },
+    "STOCK_DOOR": { "SNR_L": 32, "SNR_R": 32, "E03": 18, "FC1": 18, "G14": 20 }
+  }
+}
