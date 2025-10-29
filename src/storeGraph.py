@@ -74,9 +74,10 @@ def find_shortest_path(G, start_node: str, end_node: str):
     return path, distance
 
 
+
 # --- Example usage ---
 if __name__ == "__main__":
-    json_path = Path(__file__).parent / "storeMap.json"
+    json_path = Path(__file__).resolve().parent.parent / "data" /"storeMap.json"
     G = build_store_graph(json_path)
 
     print(f"Graph built with {len(G.nodes)} nodes and {len(G.edges)} edges.")
