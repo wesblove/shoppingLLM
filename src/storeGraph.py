@@ -8,7 +8,9 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from pathlib import Path
 
-def build_store_graph(json_path: str):
+#json_path = Path(__file__).resolve().parent.parent / "data" /"storeMap.json"
+
+def build_store_graph(json_path = "data/storeMap.json"):
     """Load storeMap.json and build a weighted NetworkX graph."""
     with open(json_path, "r") as f:
         data = json.load(f)
@@ -71,14 +73,14 @@ def find_shortest_path(G, start_node: str, end_node: str):
         raise ValueError("Invalid node(s) provided.")
     path = nx.shortest_path(G, source=start_node, target=end_node, weight="weight")
     distance = nx.shortest_path_length(G, source=start_node, target=end_node, weight="weight")
-    return path, distance
+    return path, distance   #Testing update, for functionality in pathfinder, remove distance - will address later
 
 
-
+'''
 # --- Example usage ---
 if __name__ == "__main__":
-    json_path = Path(__file__).resolve().parent.parent / "data" /"storeMap.json"
-    G = build_store_graph(json_path)
+    # json_path = Path(__file__).resolve().parent.parent / "data" /"storeMap.json"
+    G = build_store_graph()
 
     print(f"Graph built with {len(G.nodes)} nodes and {len(G.edges)} edges.")
 
@@ -94,3 +96,4 @@ if __name__ == "__main__":
 
     # Optional visualization
     # plot_store_graph(G)
+'''

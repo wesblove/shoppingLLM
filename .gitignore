@@ -1,0 +1,17 @@
+# Bytecode
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.env/
+
+# OS junk
+.DS_Store
+
+# Python notebooks
+*.ipynb_checkpoints/
+
+# Sensitive files (optional)
+*.key
+*.pem
