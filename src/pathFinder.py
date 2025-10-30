@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
 pathfinder.py
-Executes exactly what the LLM provides — no reasoning, no optimization, no validation.
-
+Executes exactly what the LLM provides 
 Expected plan format:
 {
     "start": "ENTRY1",
@@ -60,15 +59,37 @@ def execute_plan(plan: dict):
     """Execute the route plan exactly as provided by the LLM."""
     G = build_store_graph()
     remove_avoids(G, plan.get("avoid", []))
+    # Normalize plan keys and defaults
+    start = plan.get("start")
+    end = plan.get("end")
+    waypoints_list = plan.get("waypoints", []) or []
 
-    waypoints = [plan["start"]] + plan["waypoints"] + [plan["end"]]
+    if start is None or end is None:
+        raise ValueError("Plan must include 'start' and 'end' nodes.")
+
+    waypoints = [start] + waypoints_list + [end]
 
     path = []
+    total_distance = 0.0
+
     for a, b in zip(waypoints, waypoints[1:]):
-        sub = find_shortest_path(G, a, b)
-        append_to_path(path, sub)
+        # find_shortest_path returns (path, distance)
+        try:
+            sub_path, distance = find_shortest_path(G, a, b)
+        except Exception as e:
+            # Provide context if an inner lookup fails
+            raise ValueError(f"Error finding shortest path from {a} to {b}: {e}")
+
+        append_to_path(path, sub_path)
+        # accumulate the returned weighted distance
+        try:
+            total_distance += float(distance)
+        except Exception:
+            # If distance isn't numeric for some reason, ignore but warn
+            pass
 
     draw_path(G, path)
+    return path, total_distance
 
 
 # --------------------------------------------------
@@ -76,8 +97,13 @@ if __name__ == "__main__":
     # example for quick testing
     sample_plan = {
         "start": "ENTRY1",
-        "waypoints": ["G13", "G07", "E01"],
+        "waypoints": ["G13", "G07", "E01", "BIKES"],
         "end": "REG",
         "avoid": ["E05", "E06"],
     }
-    execute_plan(sample_plan)
+    result = execute_plan(sample_plan)
+    if isinstance(result, tuple) and len(result) == 2:
+        full_path, total_dist = result
+        print(f"Executed plan; total nodes in path: {len(full_path)}; total distance: {total_dist}")
+    else:
+        print("Executed plan.")

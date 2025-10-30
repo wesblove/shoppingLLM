@@ -43,7 +43,7 @@ def build_store_graph(json_path = "data/storeMap.json"):
 def plot_store_graph(G):
     """Visualize the store layout using node coordinates."""
     pos = {n: (G.nodes[n]["x"], G.nodes[n]["y"]) for n in G.nodes}
-    plt.figure(figsize=(14, 10))
+    plt.figure(figsize=(7, 5))
     nx.draw(
         G, pos,
         with_labels=True,
@@ -76,7 +76,7 @@ def find_shortest_path(G, start_node: str, end_node: str):
     return path, distance   #Testing update, for functionality in pathfinder, remove distance - will address later
 
 
-'''
+
 # --- Example usage ---
 if __name__ == "__main__":
     # json_path = Path(__file__).resolve().parent.parent / "data" /"storeMap.json"
@@ -95,5 +95,4 @@ if __name__ == "__main__":
     print(f"\nShortest path ENTRY1 → E06: {path} (Total distance: {dist})")
 
     # Optional visualization
-    # plot_store_graph(G)
-'''
+    plot_store_graph(G)
